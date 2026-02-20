@@ -1,0 +1,21 @@
+body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#status-card {
+    border: 1px solid #30363d;
+    padding: 2rem;
+    border-radius: 8px;
+    background: #161b22;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+h1 { color: #58a6ff; }
+strong { color: #3fb950; }
