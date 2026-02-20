@@ -159,6 +159,7 @@ button:hover { background: #2ea043; }
 /* Identity Tooltip (Reveal Willie Bonner Jr) */
 .identity {
     position: relative;
+    display: inline-block; /* Keeps the tooltip centered over the text */
     cursor: help;
     color: #3fb950; 
     border-bottom: 1px dashed #3fb950;
@@ -178,14 +179,15 @@ button:hover { background: #2ea043; }
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* Smoother pop-in */
     box-shadow: 0 5px 15px rgba(0,0,0,0.4);
     border: 1px solid #30363d;
     z-index: 100;
+    pointer-events: none; /* Mouse can't "hit" the tooltip accidentally */
 }
 
 .identity:hover::after {
     opacity: 1;
     visibility: visible;
-    bottom: 150%;
+    bottom: 150%; /* Moves up slightly when appearing */
 }
