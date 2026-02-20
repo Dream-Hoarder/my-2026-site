@@ -19,3 +19,28 @@ body {
 
 h1 { color: #58a6ff; }
 strong { color: #3fb950; }
+
+#contact {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.contact-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 1px solid #58a6ff;
+    border-radius: 5px;
+    color: #58a6ff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #58a6ff;
+    color: #0d1117;
+}
