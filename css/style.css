@@ -155,3 +155,37 @@ button:hover { background: #2ea043; }
     background: #58a6ff;
     color: #0d1117;
 }
+
+/* Identity Tooltip (Reveal Willie Bonner Jr) */
+.identity {
+    position: relative;
+    cursor: help;
+    color: #3fb950; 
+    border-bottom: 1px dashed #3fb950;
+}
+
+.identity::after {
+    content: attr(data-real-name); 
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #161b22;
+    color: #58a6ff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    border: 1px solid #30363d;
+    z-index: 100;
+}
+
+.identity:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: 150%;
+}
