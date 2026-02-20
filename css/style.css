@@ -1,25 +1,136 @@
+/* Base Layout */
 body {
     background: #0d1117;
     color: #c9d1d9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    display: flex; 
+    justify-content: center; 
+    min-height: 100vh; 
+    padding: 40px 20px;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 30px; 
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Status Card & Headers */
 #status-card {
     border: 1px solid #30363d;
     padding: 2rem;
     border-radius: 8px;
     background: #161b22;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
 h1 { color: #58a6ff; }
 strong { color: #3fb950; }
 
+/* Dashboard Grid */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+}
+
+.card h3 { color: #58a6ff; margin-top: 0; }
+
+/* Status Indicators (The Lights) */
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #8b949e; /* Default Gray */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.status-online { 
+    background: #3fb950; 
+    box-shadow: 0 0 8px #3fb950; 
+}
+
+.status-offline { 
+    background: #f85149; 
+    box-shadow: 0 0 8px #f85149; 
+}
+
+/* Buttons */
+button {
+    background: #238636;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+button:hover { background: #2ea043; }
+
+/* Terminal */
+#terminal-container {
+    width: 100%;
+    max-width: 800px;
+    background: #010409;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #161b22;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+    font-size: 0.8rem;
+}
+
+.dots span {
+    height: 8px;
+    width: 8px;
+    background: #30363d;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#terminal-body {
+    padding: 15px;
+    height: 150px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    color: #3fb950; 
+    text-align: left;
+}
+
+.log-entry { margin: 5px 0; }
+.log-time { color: #8b949e; margin-right: 10px; }
+
+/* Contact Section */
 #contact {
     margin-top: 30px;
     text-align: center;
