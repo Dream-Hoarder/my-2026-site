@@ -191,3 +191,38 @@ button:hover { background: #2ea043; }
     visibility: visible;
     bottom: 150%; /* Moves up slightly when appearing */
 }
+
+/* List Item Styling (For Weather & Stocks) */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #30363d;
+    font-size: 0.9rem;
+    text-align: left; /* Overrides the card's center align */
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item span {
+    color: #8b949e;
+}
+
+.list-item strong, .list-item .price {
+    color: #3fb950;
+    font-family: 'Courier New', monospace;
+}
+
+/* Ensure the Watchlist container looks clean */
+#stock-watchlist, #weather-list {
+    margin-top: 10px;
+}
+
+#stock-watchlist small {
+    color: #58a6ff;
+    margin-left: 5px;
+    font-size: 0.75rem;
+}

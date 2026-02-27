@@ -19,21 +19,31 @@
 
         <div class="dashboard">
             <div class="card">
-                <div class="status-indicator" id="weather-status"></div>
-                <h3>Weather (London)</h3>
-                <p id="weather-temp">--°C</p>
-                <p id="weather-desc">Syncing...</p>
+                <div class="status-indicator status-online" id="weather-status"></div>
+                <h3>Global Weather</h3>
+                <div id="weather-list">
+                    <div class="list-item">
+                        <span>Houston (Home):</span> <strong id="houston-temp">--°F</strong>
+                    </div>
+                    <div class="list-item">
+                        <span>Tokyo (Hobby):</span> <strong id="tokyo-temp">--°C</strong>
+                    </div>
+                    <div class="list-item">
+                        <span>Paris (Wedding):</span> <strong id="paris-temp">--°C</strong>
+                    </div>
+                </div>
             </div>
 
             <div class="card">
-                <div class="status-indicator" id="stock-status"></div>
-                <h3>Stock (Apple)</h3>
-                <p id="stock-symbol">AAPL</p>
-                <p id="stock-price">Loading...</p>
+                <div class="status-indicator status-online" id="stock-status"></div>
+                <h3>Market Watch</h3>
+                <div id="stock-watchlist">
+                    </div>
+                <button onclick="refreshStocks()" style="margin-top: 15px;">Refresh Prices</button>
             </div>
 
             <div class="card">
-                <div class="status-indicator" id="ai-status"></div>
+                <div class="status-indicator status-online" id="ai-status"></div>
                 <h3>AI Thought</h3>
                 <p id="ai-response" style="font-style: italic;">"Thinking..."</p>
                 <button onclick="askAI()">New Thought</button>
