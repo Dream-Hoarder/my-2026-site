@@ -48,6 +48,27 @@ const locations = [
     { name: "Paris", lat: 48.85, lon: 2.35, id: "paris-temp", unit: "celsius" }
 ];
 
+const myArticles = [
+    {
+        date: "2026-02-28",
+        title: "The 2026 Pivot: From Data to Wisdom",
+        snippet: "In a world flooded with AI noise, the true 'Dream-Hoarder' focuses on high-signal intelligence.",
+        link: "#"
+    },
+    {
+        date: "2026-02-25",
+        title: "Automating the Revolution",
+        snippet: "How integrated dashboards bridge the gap between market awareness and execution.",
+        link: "#"
+    },
+    {
+        date: "2026-02-15",
+        title: "Securing the Command Center",
+        snippet: "Why SSH Ed25519 is the only handshake you should trust for your infrastructure.",
+        link: "#"
+    }
+];
+
 // --- 1. Weather Module ---
 async function fetchGlobalWeather() {
     logToTerminal("Initiating Global Weather Handshake...");
@@ -74,7 +95,6 @@ async function refreshStocks() {
     logToTerminal("Scanning Market Watchlist...");
     const listContainer = document.getElementById('stock-watchlist');
     if (!listContainer) return;
-
     listContainer.innerHTML = ""; 
 
     try {
@@ -115,11 +135,32 @@ async function askAI() {
     }
 }
 
+// --- 4. Intelligence Feed (Blog) ---
+function renderBlog() {
+    logToTerminal("Syncing Intelligence Feed...");
+    const blogWrapper = document.getElementById('blog-posts');
+    if (!blogWrapper) return;
+    blogWrapper.innerHTML = ""; 
+
+    myArticles.forEach(article => {
+        const art = document.createElement('article');
+        art.innerHTML = `
+            <small style="color: #8b949e; font-family: monospace;">${article.date}</small>
+            <h4 style="margin: 5px 0; color: #58a6ff;">${article.title}</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 10px;">${article.snippet}</p>
+            <a href="${article.link}" style="color: #3fb950; font-size: 0.8rem; text-decoration: none; font-weight: bold;">READ PROTOCOL ></a>
+        `;
+        blogWrapper.appendChild(art);
+    });
+    logToTerminal("Intelligence Feed: Online.");
+}
+
 // --- Initialization ---
 window.onload = () => {
     fetchGlobalWeather();
     refreshStocks();
     askAI();
+    renderBlog(); // <--- This must be active
 
     setInterval(refreshStocks, 300000);
     setInterval(fetchGlobalWeather, 300000);

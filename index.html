@@ -22,23 +22,16 @@
                 <div class="status-indicator status-online" id="weather-status"></div>
                 <h3>Global Weather</h3>
                 <div id="weather-list">
-                    <div class="list-item">
-                        <span>Houston (Home):</span> <strong id="houston-temp">--°F</strong>
-                    </div>
-                    <div class="list-item">
-                        <span>Tokyo (Hobby):</span> <strong id="tokyo-temp">--°C</strong>
-                    </div>
-                    <div class="list-item">
-                        <span>Paris (Wedding):</span> <strong id="paris-temp">--°C</strong>
-                    </div>
+                    <div class="list-item"><span>Houston (Home):</span> <strong id="houston-temp">--°F</strong></div>
+                    <div class="list-item"><span>Tokyo (Hobby):</span> <strong id="tokyo-temp">--°C</strong></div>
+                    <div class="list-item"><span>Paris (Wedding):</span> <strong id="paris-temp">--°C</strong></div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="status-indicator status-online" id="stock-status"></div>
                 <h3>Market Watch</h3>
-                <div id="stock-watchlist">
-                    </div>
+                <div id="stock-watchlist"></div>
                 <button onclick="refreshStocks()" style="margin-top: 15px;">Refresh Prices</button>
             </div>
 
@@ -50,13 +43,57 @@
             </div>
         </div>
 
+        <h2 style="margin-top: 40px; border-bottom: 1px solid #00ff00; display: inline-block;">Strategic Roadmap</h2>
+        <div class="dashboard">
+            
+            <div class="card">
+                <h3><i class="fas fa-id-card"></i> Identity & Mission</h3>
+                <p><strong>Homepage:</strong> Engaging overview reflecting the brand clearly.</p>
+                <p><strong>About:</strong> Mission and values that drive the revolution.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-briefcase"></i> Solutions</h3>
+                <p><strong>Services/Products:</strong> Detailed features, benefits, and pricing structures.</p>
+                <p><strong>Portfolio:</strong> Showcasing work that demonstrates industry expertise.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-chart-line"></i> Growth Engine</h3>
+                <p><strong>Blog/Articles:</strong> High-value content for SEO and positioning.</p>
+                <p><strong>Newsletter:</strong> Opt-in for updates and valuable promotions.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-shield-alt"></i> Trust Protocols</h3>
+                <p><strong>Testimonials:</strong> Feedback to build credibility.</p>
+                <p><strong>FAQ:</strong> Reducing support queries with clear answers.</p>
+                <p><strong>Privacy:</strong> Essential compliance and data handling.</p>
+            </div>
+        </div>
+
+        <section id="tech-features" class="card" style="width: 100%; box-sizing: border-box;">
+            <h3><i class="fas fa-microchip"></i> Advanced Systems</h3>
+            <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.85em;">
+                <span><i class="fas fa-search"></i> Search Function</span>
+                <span><i class="fas fa-share-alt"></i> Social Integration</span>
+                <span><i class="fas fa-mobile-alt"></i> Mobile Responsive</span>
+                <span><i class="fas fa-bolt"></i> Speed Optimized</span>
+                <span><i class="fas fa-lock"></i> SSL / Security</span>
+                <span><i class="fas fa-user-check"></i> Analytics Tracking</span>
+            </div>
+        </section>
+<section id="blog-container" class="card" style="width: 100%; text-align: left;">
+    <h3><i class="fas fa-rss"></i> Intelligence Feed</h3>
+    <div id="blog-posts">
+        </div>
+</section>
         <section id="terminal-container">
             <div class="terminal-header">
                 <span><i class="fas fa-terminal"></i> System Logs</span>
                 <div class="dots"><span></span><span></span><span></span></div>
             </div>
-            <div id="terminal-body">
-                </div>
+            <div id="terminal-body"></div>
         </section>
 
         <section id="contact">
@@ -64,6 +101,7 @@
             <div class="contact-links">
                 <a href="mailto:willie.bonnerjr@outlook.com" class="btn">Email Me</a>
                 <a href="https://github.com/Dream-Hoarder" class="btn">GitHub</a>
+                <a href="#" class="btn"><i class="fab fa-linkedin"></i> Socials</a>
             </div>
         </section>
     </main>
