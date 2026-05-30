@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Willie Bonner Jr</title>
+<meta name="description" content="Technical blog posts by Willie Bonner Jr covering Qubes OS hardening, zero-trust setups, and automated systems engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { padding-top: 56px; }
+  section { min-height: calc(100vh - 120px); display: flex; flex-direction: column; justify-content: center; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">WBJ</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="interests.html">Interests</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">// 05 — Intelligence Feed</div>
+  <h2 class="section-title">Writing</h2>
+  <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 32px; max-width: 560px;">
+    Technical field notes and post-operational reports detailing Qubes OS configuration, kernel-level security audits, and systems engineering practices.
+  </p>
+  <div class="blog-list fade-in visible" id="blog-posts"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <span>Willie Bonner Jr.</span> — Dream-Hoarder &copy; 2026 &nbsp;|&nbsp; Pixel Prodigy Studios</p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

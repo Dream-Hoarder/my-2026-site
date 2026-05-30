@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inter-VM Automation with Qubes qrexec — Willie Bonner Jr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">WBJ</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="interests.html">Interests</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ARTICLE -->
+<article class="blog-article">
+  <a href="blog.html" class="article-back">&larr; Back to Blog</a>
+  
+  <header class="article-header">
+    <div class="article-date">2026-05-20</div>
+    <h1 class="article-title">Understanding Qubes qrexec: Inter-VM Automation</h1>
+    <div class="article-meta">Category: Automation & Systems | Target: Dom0 RPC</div>
+  </header>
+  
+  <div class="article-body">
+    <p>
+      In a compartmentalized OS, virtual machines are completely isolated by default. They share no clipboard, no file system, and no networking routes. However, a practical developer environment requires structured data transfer. Qubes handles this securely through its RPC protocol: <strong>qrexec</strong>.
+    </p>
+    
+    <p>
+      Rather than utilizing insecure network ports, <code>qrexec</code> allows VM-to-VM commands using the Xen hypervisor vchan channel. The policies governing these interactions are configured inside the admin domain (<code>dom0</code>). Here is how I build secure, automated workflows between restricted security domains.
+    </p>
+    
+    <h3>1. The Anatomy of a Qrexec Policy</h3>
+    <p>
+      All RPC permissions are enforced by <code>dom0</code> and defined under files in <code>/etc/qubes/policy.d/</code>. A typical policy line consists of:
+    </p>
+    
+    <pre><code># Service-Name + Source + Target + Action
+qubes.Filecopy  *  work-dev  vault  ask
+qubes.SshAgent  *  work-dev  vault  allow</code></pre>
+    
+    <p>
+      This policy states that any file copy command executed from the <code>work-dev</code> VM to the offline <code>vault</code> VM must prompt the user via a secure GUI dialogue window, while SSH agent signing requests from <code>work-dev</code> to the <code>vault</code> VM are allowed implicitly without prompts.
+    </p>
+
+    <div class="article-alert">
+      <strong>Zero-Trust Notice:</strong> Never use <code>allow</code> for commands that transmit arbitrary system payloads or access core administrative files. Default to <code>ask</code> or specify specific target VMs.
+    </div>
+
+    <h3>2. Creating a Custom Telemetry RPC Service</h3>
+    <p>
+      To aggregate logs from my development VMs into a centralized, network-isolated logs VM (<code>sys-log-hub</code>), I configure a custom qrexec service:
+    </p>
+    
+    <p>
+      <strong>Step 1: Define the service configuration in the Target TemplateVM:</strong><br>
+      Create a script named <code>/etc/qubes-rpc/pp.LogTelemetry</code> inside the template for the log hub:
+    </p>
+    
+    <pre><code>#!/bin/sh
+# Log ingestion script - Appends input data to a local audit log
+read log_payload
+echo "$(date -u) [INCOMING] $log_payload" >> /var/log/telemetry/dev-nodes.audit.log</code></pre>
+
+    <p>
+      Make the script executable. Since this TemplateVM handles standard RPC invocations, this script is automatically copied to the root directory of the AppVMs spawned from it.
+    </p>
+
+    <p>
+      <strong>Step 2: Declare the Policy in Dom0:</strong><br>
+      Inside <code>dom0</code>, create the policy rule file: <code>/etc/qubes/policy.d/30-telemetry.policy</code>:
+    </p>
+    <pre><code>pp.LogTelemetry  *  work-dev  sys-log-hub  allow
+pp.LogTelemetry  *  @anyvm    sys-log-hub  deny</code></pre>
+
+    <p>
+      This policy allows the <code>work-dev</code> VM to transmit text strings directly to <code>sys-log-hub</code>, while denying the privilege to all other untrusted virtual machines.
+    </p>
+
+    <h3>3. Testing the Automated Pipeline</h3>
+    <p>
+      From inside the <code>work-dev</code> VM, I can now pipe output directly through the qrexec framework using the hypervisor vchan client:
+    </p>
+    <pre><code>echo "CRITICAL: Suspicious process spawned in dev environment." | qrexec-client-vm sys-log-hub pp.LogTelemetry</code></pre>
+    
+    <p>
+      The data bypasses the network stack entirely, traveling directly through hypervisor memory. The log hub processes the payload and appends it to our immutable audit trail, maintaining full operational isolation.
+    </p>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <span>Willie Bonner Jr.</span> — Dream-Hoarder &copy; 2026 &nbsp;|&nbsp; Pixel Prodigy Studios</p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

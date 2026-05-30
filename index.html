@@ -4,693 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Willie Bonner Jr — Dream-Hoarder</title>
+<meta name="description" content="Portfolio of Willie Bonner Jr. — Technical Architect, Systems Security Specialist, and Founder of Pixel Prodigy Studios. Specializing in Zero-Trust systems, Agentic AI, and cybersecurity.">
+<meta name="keywords" content="Willie Bonner Jr, Dream-Hoarder, Systems Security, Technical Architect, Zero-Trust, Qubes OS, Cybersecurity, Agentic AI, Pixel Prodigy Studios">
+<meta name="author" content="Willie Bonner Jr">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/Dream-Hoarder">
+<meta property="og:title" content="Willie Bonner Jr — Dream-Hoarder Portfolio">
+<meta property="og:description" content="Technical Architect & Systems Security Specialist. Building Zero-Trust systems, Agentic AI, and next-gen entertainment platforms.">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://github.com/Dream-Hoarder">
+<meta property="twitter:title" content="Willie Bonner Jr — Dream-Hoarder Portfolio">
+<meta property="twitter:description" content="Technical Architect & Systems Security Specialist. Building Zero-Trust systems, Agentic AI, and next-gen entertainment platforms.">
+
+<!-- JSON-LD Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Willie Bonner Jr",
+  "jobTitle": "Technical Architect & Systems Security Specialist",
+  "url": "https://github.com/Dream-Hoarder",
+  "sameAs": [
+    "https://github.com/Dream-Hoarder"
+  ],
+  "knowsAbout": [
+    "Zero-Trust Architecture",
+    "Systems Security Engineering",
+    "Agentic AI Systems",
+    "Android Forensics",
+    "Software Architecture"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Pixel Prodigy Studios"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-  :root {
-    --bg: #080b10;
-    --bg2: #0d1117;
-    --bg3: #161b22;
-    --border: #21262d;
-    --border-bright: #30363d;
-    --text: #e6edf3;
-    --muted: #7d8590;
-    --accent: #58a6ff;
-    --green: #3fb950;
-    --amber: #d29922;
-    --red: #f85149;
-    --font-head: 'Syne', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* === NAV === */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(8,11,16,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-  /* === HERO === */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 100px 40px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    opacity: 0.3;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
-  }
-
-  .hero-content {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(88,166,255,0.08);
-    border: 1px solid rgba(88,166,255,0.2);
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 6px var(--green);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  .hero-name {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    line-height: 1.0;
-    letter-spacing: -2px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-
-  .hero-name span { color: var(--accent); }
-
-  .hero-handle {
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: clamp(1rem, 3vw, 1.6rem);
-    color: var(--muted);
-    margin-bottom: 24px;
-    letter-spacing: -0.5px;
-  }
-
-  .hero-desc {
-    max-width: 600px;
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.8;
-    margin-bottom: 40px;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #080b10;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: opacity 0.2s, transform 0.2s;
-    display: inline-block;
-  }
-
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border-bright);
-    padding: 10px 22px;
-    border-radius: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: border-color 0.2s, transform 0.2s;
-    display: inline-block;
-  }
-
-  .btn-ghost:hover { border-color: var(--accent); transform: translateY(-1px); }
-
-  /* === SECTIONS === */
-  section {
-    padding: 80px 40px;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-
-  .section-title {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    letter-spacing: -1px;
-    color: var(--text);
-    margin-bottom: 40px;
-    line-height: 1.1;
-  }
-
-  .section-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  /* === ABOUT === */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-  .about-text p {
-    color: var(--muted);
-    font-size: 0.88rem;
-    line-height: 1.9;
-    margin-bottom: 16px;
-  }
-
-  .about-text strong { color: var(--text); font-weight: 500; }
-
-  .about-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .stat-block {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
-    transition: border-color 0.2s;
-  }
-
-  .stat-block:hover { border-color: var(--border-bright); }
-
-  .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-
-  .stat-value {
-    font-family: var(--font-head);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .stat-value span { color: var(--accent); }
-
-  /* === SKILLS === */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .skill-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-
-  .skill-card-icon {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    color: var(--accent);
-  }
-
-  .skill-card h4 {
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-
-  .skill-card p {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-  }
-
-  .tag {
-    background: rgba(88,166,255,0.08);
-    border: 1px solid rgba(88,166,255,0.15);
-    color: var(--accent);
-    font-size: 0.68rem;
-    padding: 3px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
-  }
-
-  /* === PROJECTS === */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .project-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px;
-    transition: border-color 0.2s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-  }
-
-  .project-card:hover { border-color: var(--green); transform: translateY(-2px); }
-
-  .project-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-
-  .project-name {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--accent);
-  }
-
-  .project-lang {
-    font-size: 0.68rem;
-    color: var(--muted);
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 2px 8px;
-    border-radius: 10px;
-  }
-
-  .project-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.7;
-    flex: 1;
-    margin-bottom: 14px;
-  }
-
-  .project-footer {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.72rem;
-    color: var(--green);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* === ANIME SECTION === */
-  .anime-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .anime-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px 20px;
-    text-align: center;
-    transition: border-color 0.2s;
-  }
-
-  .anime-card:hover { border-color: var(--amber); }
-
-  .anime-icon {
-    font-size: 2rem;
-    margin-bottom: 12px;
-  }
-
-  .anime-card h4 {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-
-  .anime-card p {
-    font-size: 0.78rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  /* === DASHBOARD (COMPACT) === */
-  #dashboard { background: var(--bg2); }
-
-  .dash-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 80px 40px;
-  }
-
-  .dash-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .dash-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 22px;
-    position: relative;
-  }
-
-  .dash-card h4 {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .status-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--muted);
-    flex-shrink: 0;
-    transition: background 0.3s, box-shadow 0.3s;
-  }
-
-  .status-dot.on { background: var(--green); box-shadow: 0 0 6px var(--green); }
-  .status-dot.off { background: var(--red); box-shadow: 0 0 6px var(--red); }
-
-  .weather-list .list-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.82rem;
-  }
-
-  .weather-list .list-row:last-child { border-bottom: none; }
-  .weather-list .list-row span:first-child { color: var(--muted); }
-  .weather-list .list-row strong { color: var(--text); }
-
-  #ai-response {
-    font-size: 0.85rem;
-    color: var(--text);
-    font-style: italic;
-    line-height: 1.7;
-    margin-bottom: 14px;
-    min-height: 60px;
-  }
-
-  #ai-response::before { content: '"'; color: var(--accent); font-style: normal; }
-  #ai-response::after  { content: '"'; color: var(--accent); font-style: normal; }
-
-  .dash-btn {
-    background: transparent;
-    border: 1px solid var(--border-bright);
-    color: var(--text);
-    padding: 7px 14px;
-    border-radius: 5px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-
-  .dash-btn:hover { border-color: var(--accent); }
-
-  /* === BLOG === */
-  .blog-list { display: flex; flex-direction: column; gap: 24px; }
-
-  .blog-post {
-    border-left: 2px solid var(--border);
-    padding-left: 20px;
-    transition: border-color 0.2s;
-  }
-
-  .blog-post:hover { border-color: var(--accent); }
-
-  .blog-date {
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
-  }
-
-  .blog-post h4 {
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--accent);
-    margin-bottom: 6px;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .blog-post h4:hover { color: var(--green); }
-
-  .blog-post p {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 8px;
-  }
-
-  .blog-read {
-    font-size: 0.72rem;
-    color: var(--green);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: opacity 0.2s;
-  }
-
-  .blog-read:hover { opacity: 0.7; }
-
-  /* === CONTACT === */
-  .contact-inner {
-    text-align: center;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  .contact-inner p {
-    color: var(--muted);
-    font-size: 0.88rem;
-    line-height: 1.8;
-    margin-bottom: 32px;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  /* === TERMINAL === */
-  .terminal-wrap {
-    max-width: 960px;
-    margin: 0 auto 60px;
-    padding: 0 40px;
-  }
-
-  .terminal {
-    background: #010409;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .terminal-bar {
-    background: var(--bg3);
-    padding: 9px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
-
-  .terminal-dots { display: flex; gap: 6px; }
-  .terminal-dots span { width: 10px; height: 10px; border-radius: 50%; }
-  .td-r { background: #ff5f57; }
-  .td-y { background: #febc2e; }
-  .td-g { background: #28c840; }
-
-  #terminal-body {
-    padding: 14px 16px;
-    height: 130px;
-    overflow-y: auto;
-    font-size: 0.78rem;
-    color: var(--green);
-    font-family: var(--font-mono);
-  }
-
-  #terminal-body p { margin-bottom: 2px; }
-  #terminal-body .log-time { color: var(--muted); }
-
-  /* === FOOTER === */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 28px 40px;
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  footer span { color: var(--accent); }
-
-  /* === ANIMATIONS === */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 700px) {
-    nav { padding: 0 20px; }
-    nav .nav-links { display: none; }
-    #hero { padding: 90px 20px 50px; }
-    section { padding: 60px 20px; }
-    .about-grid { grid-template-columns: 1fr; }
-    .anime-grid { grid-template-columns: 1fr; }
-    .dash-row { grid-template-columns: 1fr; }
-    .dash-inner { padding: 60px 20px; }
-    .terminal-wrap { padding: 0 20px; }
-    footer { padding: 20px; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">WBJ</a>
+  <a href="index.html" class="nav-logo">WBJ</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#interests">Interests</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="interests.html">Interests</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-tag">System: Online — Houston, TX</div>
     <h1 class="hero-name">Willie<br><span>Bonner Jr.</span></h1>
@@ -700,237 +78,10 @@
       Building hardened infrastructure, agentic AI systems, and next-generation entertainment platforms — from the ground up.
     </p>
     <div class="hero-cta">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-ghost">Get in Touch</a>
-      <a href="https://github.com/Dream-Hoarder" target="_blank" class="btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+      <a href="projects.html" class="btn-primary">View Projects</a>
+      <a href="contact.html" class="btn-ghost">Get in Touch</a>
+      <a href="https://github.com/Dream-Hoarder" target="_blank" class="btn-ghost"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
     </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">// 01 — About</div>
-  <h2 class="section-title">Architect of Systems.<br>Builder of Worlds.</h2>
-  <div class="about-grid fade-in">
-    <div class="about-text">
-      <p>
-        I'm Willie Bonner Jr., a <strong>Technical Architect and Systems Security Specialist</strong> based in Houston, TX. I operate under a Zero-Trust paradigm — every environment is hostile by default, and every system I deploy reflects that discipline.
-      </p>
-      <p>
-        My foundation spans hardened operating systems including <strong>Qubes OS, Kodachi, Fedora, Ubuntu, and Arch Linux</strong>, with deep expertise in kernel-level hardening, LUKS encryption, qrexec policy management, and network obscurity via Proton VPN, Quad9, and custom proxy architectures.
-      </p>
-      <p>
-        Professionally, I fund technical execution through expertise in <strong>Healthcare Revenue Cycle</strong> — high-volume medical billing, insurance eligibility verification, and collections optimization. The operational discipline from that domain feeds directly into how I engineer systems.
-      </p>
-      <p>
-        My long game is scaling <strong>Pixel Prodigy Studios</strong> into a premier global entity — synthesizing human intent with autonomous AI to engineer seamless entertainment platforms backed by battle-hardened security infrastructure.
-      </p>
-    </div>
-    <div class="about-stats">
-      <div class="stat-block">
-        <div class="stat-label">Current OS</div>
-        <div class="stat-value"><span>Qubes OS</span> — Zero Trust</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-label">Company</div>
-        <div class="stat-value"><span>Pixel Prodigy Studios</span></div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-label">Focus</div>
-        <div class="stat-value">Security + <span>Agentic AI</span></div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-label">Location</div>
-        <div class="stat-value">Houston, <span>Texas</span></div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-label">Philosophy</div>
-        <div class="stat-value">Zero Tolerance for <span>Inefficiency</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">// 02 — Skills</div>
-  <h2 class="section-title">Core Specializations</h2>
-  <div class="skills-grid">
-
-    <div class="skill-card fade-in">
-      <div class="skill-card-icon"><i class="fas fa-shield-halved"></i></div>
-      <h4>Security Engineering</h4>
-      <p>Zero-Trust architecture. Kernel hardening, module blacklisting, LUKS containers, and restricted mount flags. Attack surface reduction by default.</p>
-      <div class="tags">
-        <span class="tag">Qubes OS</span>
-        <span class="tag">LUKS</span>
-        <span class="tag">Secure Boot</span>
-        <span class="tag">qrexec</span>
-        <span class="tag">Whonix</span>
-      </div>
-    </div>
-
-    <div class="skill-card fade-in">
-      <div class="skill-card-icon"><i class="fas fa-network-wired"></i></div>
-      <h4>Network Obscurity</h4>
-      <p>Enforce strict Deny-All ingress/egress baselines. Proton VPN, Quad9 DNS, Tor routing, and proxy architectures for full network isolation.</p>
-      <div class="tags">
-        <span class="tag">Proton VPN</span>
-        <span class="tag">Tor</span>
-        <span class="tag">Quad9</span>
-        <span class="tag">Firewall</span>
-      </div>
-    </div>
-
-    <div class="skill-card fade-in">
-      <div class="skill-card-icon"><i class="fas fa-mobile-screen"></i></div>
-      <h4>Android Forensics</h4>
-      <p>Deep-subsystem analysis via ADB and Shizuku. UID permission auditing, system broadcast mapping, and identifying obfuscated package vectors.</p>
-      <div class="tags">
-        <span class="tag">ADB</span>
-        <span class="tag">Shizuku</span>
-        <span class="tag">Termux</span>
-        <span class="tag">Forensics</span>
-      </div>
-    </div>
-
-    <div class="skill-card fade-in">
-      <div class="skill-card-icon"><i class="fas fa-code"></i></div>
-      <h4>Software Architecture</h4>
-      <p>Programmatic architecture prioritizing systemic intent and state-machine design. Unity + Firebase for interactive applications and game development.</p>
-      <div class="tags">
-        <span class="tag">Unity</span>
-        <span class="tag">Firebase</span>
-        <span class="tag">PowerShell</span>
-        <span class="tag">Perl</span>
-        <span class="tag">JS</span>
-      </div>
-    </div>
-
-    <div class="skill-card fade-in">
-      <div class="skill-card-icon"><i class="fas fa-database"></i></div>
-      <h4>Data Infrastructure</h4>
-      <p>Enterprise data pipelines, streaming platforms, and lifecycle formats. Research and design across modern distributed data systems.</p>
-      <div class="tags">
-        <span class="tag">Apache Spark</span>
-        <span class="tag">Kafka</span>
-        <span class="tag">Iceberg v3</span>
-        <span class="tag">Blockchain</span>
-      </div>
-    </div>
-
-    <div class="skill-card fade-in">
-      <div class="skill-card-icon"><i class="fas fa-hospital"></i></div>
-      <h4>Healthcare Revenue Cycle</h4>
-      <p>High-volume medical billing execution. End-to-end insurance eligibility verification and strategic collections optimization.</p>
-      <div class="tags">
-        <span class="tag">Medical Billing</span>
-        <span class="tag">Eligibility</span>
-        <span class="tag">Collections</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">// 03 — Projects</div>
-  <h2 class="section-title">Built in the Open</h2>
-  <div class="projects-grid">
-
-    <a href="https://github.com/Dream-Hoarder/Scriptgeist" target="_blank" class="project-card fade-in">
-      <div class="project-card-top">
-        <span class="project-name">Scriptgeist</span>
-        <span class="project-lang">PowerShell</span>
-      </div>
-      <p class="project-desc">Smart, real-time system sentinel. Detects silent crypto miners, unauthorized processes, credential artifacts, and suspicious behavior — like a personal JARVIS for your infrastructure.</p>
-      <div class="project-footer"><i class="fab fa-github"></i> View on GitHub &rarr;</div>
-    </a>
-
-    <a href="https://github.com/Dream-Hoarder/SLAnalyzer" target="_blank" class="project-card fade-in">
-      <div class="project-card-top">
-        <span class="project-name">SLAnalyzer</span>
-        <span class="project-lang">PowerShell</span>
-      </div>
-      <p class="project-desc">Cross-platform log intelligence module. Parses .log, .txt, .etl, and journalctl logs with colorized output, attention filtering, and cybersecurity-conscious redaction.</p>
-      <div class="project-footer"><i class="fab fa-github"></i> View on GitHub &rarr;</div>
-    </a>
-
-    <a href="https://github.com/Dream-Hoarder/SecretSeeker" target="_blank" class="project-card fade-in">
-      <div class="project-card-top">
-        <span class="project-name">SecretSeeker</span>
-        <span class="project-lang">PS / Python</span>
-      </div>
-      <p class="project-desc">Reconnaissance and secret detection tooling. Scans for exposed credentials, API keys, and sensitive artifacts across codebases and file systems.</p>
-      <div class="project-footer"><i class="fab fa-github"></i> View on GitHub &rarr;</div>
-    </a>
-
-    <a href="https://github.com/Dream-Hoarder/echo-ledger-journal" target="_blank" class="project-card fade-in">
-      <div class="project-card-top">
-        <span class="project-name">Echo Ledger Journal</span>
-        <span class="project-lang">Blockchain</span>
-      </div>
-      <p class="project-desc">Secure, auditable ledger journaling for blockchain applications. Part of the OnchainKit suite — immutable journal entries with on-chain verification and extensible ledger API.</p>
-      <div class="project-footer"><i class="fab fa-github"></i> View on GitHub &rarr;</div>
-    </a>
-
-    <a href="https://github.com/Dream-Hoarder/sigil" target="_blank" class="project-card fade-in">
-      <div class="project-card-top">
-        <span class="project-name">Sigil</span>
-        <span class="project-lang">Perl</span>
-      </div>
-      <p class="project-desc">Interactive Perl regex playground. Session-based pattern matching with save/load, flag support, colorized match output, and a full REPL command system.</p>
-      <div class="project-footer"><i class="fab fa-github"></i> View on GitHub &rarr;</div>
-    </a>
-
-    <a href="https://github.com/Dream-Hoarder/my-2026-site" target="_blank" class="project-card fade-in">
-      <div class="project-card-top">
-        <span class="project-name">This Site</span>
-        <span class="project-lang">HTML/CSS/JS</span>
-      </div>
-      <p class="project-desc">The command center itself. A personal portfolio and live dashboard — open source, no frameworks, no dependencies. Pure craft.</p>
-      <div class="project-footer"><i class="fab fa-github"></i> View on GitHub &rarr;</div>
-    </a>
-
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- INTERESTS / ANIME -->
-<section id="interests">
-  <div class="section-label">// 04 — Interests</div>
-  <h2 class="section-title">Beyond the Terminal</h2>
-  <p style="color: var(--muted); font-size: 0.88rem; margin-bottom: 32px; max-width: 560px;">
-    The same principles that define great anime — long-term world-building, systematic power scaling, and breaking through structural limits — define how I approach building systems.
-  </p>
-  <div class="anime-grid fade-in">
-
-    <div class="anime-card">
-      <div class="anime-icon">&#9875;</div>
-      <h4>One Piece</h4>
-      <p>A masterclass in long-term strategic world-building. Factional subversion against centralized power. Assembling a specialized, high-capability crew toward an impossible goal.</p>
-    </div>
-
-    <div class="anime-card">
-      <div class="anime-icon">&#128293;</div>
-      <h4>Naruto</h4>
-      <p>Intense technical methodology under pressure. Breaking through systemic limitations via raw operational endurance. The will to push past every ceiling placed in front of you.</p>
-    </div>
-
-    <div class="anime-card">
-      <div class="anime-icon">&#9889;</div>
-      <h4>Dragon Ball Z</h4>
-      <p>The definitive blueprint for continuous capacity upgrading. Power-scaling beyond baseline limits. Combating existential threats by refusing to stop growing.</p>
-    </div>
-
   </div>
 </section>
 
@@ -939,7 +90,7 @@
 <!-- DASHBOARD (COMPACT) -->
 <div id="dashboard">
   <div class="dash-inner">
-    <div class="section-label">// 05 — Live Systems</div>
+    <div class="section-label">// Live Systems</div>
     <h2 class="section-title" style="margin-bottom: 24px;">Command Center</h2>
     <div class="dash-row">
 
@@ -955,7 +106,7 @@
       <div class="dash-card">
         <h4><span class="status-dot" id="ai-dot"></span> AI Thought</h4>
         <p id="ai-response">Thinking...</p>
-        <button class="dash-btn" onclick="askAI()">New Thought</button>
+        <button class="dash-btn" id="new-thought-btn">New Thought</button>
       </div>
 
     </div>
@@ -966,162 +117,31 @@
 <div class="terminal-wrap">
   <div class="terminal">
     <div class="terminal-bar">
-      <div class="terminal-dots">
+      <div class="terminal-dots" aria-hidden="true">
         <span class="td-r"></span>
         <span class="td-y"></span>
         <span class="td-g"></span>
       </div>
-      <span><i class="fas fa-terminal"></i> system.log</span>
+      <span><i class="fas fa-terminal" aria-hidden="true"></i> system.log</span>
       <span></span>
     </div>
-    <div id="terminal-body"></div>
+    <div id="terminal-body">
+      <div id="terminal-history"></div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">guest@dream-hoarder:~$</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal Input">
+      </div>
+    </div>
   </div>
 </div>
 
 <hr class="section-divider">
-
-<!-- BLOG -->
-<section id="blog">
-  <div class="section-label">// 06 — Intelligence Feed</div>
-  <h2 class="section-title">Writing</h2>
-  <div class="blog-list fade-in" id="blog-posts"></div>
-</section>
-
-<hr class="section-divider">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">// 07 — Contact</div>
-  <h2 class="section-title">Connect</h2>
-  <div class="contact-inner">
-    <p>
-      Building something interesting? Want to talk security, AI, or systems architecture?
-      Reach out — I respond to signal, not noise.
-    </p>
-    <div class="contact-links">
-      <a href="mailto:willie.bonnerjr@outlook.com" class="btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
-      <a href="https://github.com/Dream-Hoarder" target="_blank" class="btn-ghost"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer>
   <p>Built by <span>Willie Bonner Jr.</span> — Dream-Hoarder &copy; 2026 &nbsp;|&nbsp; Pixel Prodigy Studios</p>
 </footer>
 
-<script>
-const myArticles = [
-  {
-    date: "2026-02-28",
-    title: "The 2026 Pivot: From Data to Wisdom",
-    snippet: "In a world flooded with AI noise, the Dream-Hoarder focuses on high-signal intelligence. What separates execution from distraction.",
-    link: "#"
-  },
-  {
-    date: "2026-02-25",
-    title: "Automating the Revolution",
-    snippet: "How integrated dashboards and modular scripts bridge the gap between market awareness and real execution velocity.",
-    link: "#"
-  },
-  {
-    date: "2026-02-15",
-    title: "Securing the Command Center",
-    snippet: "Why SSH Ed25519 is the only handshake you should trust — and how Qubes OS changes the threat model entirely.",
-    link: "#"
-  }
-];
-
-const locations = [
-  { name: "Houston", lat: 29.76, lon: -95.36, id: "houston-temp", unit: "fahrenheit", symbol: "°F" },
-  { name: "Tokyo",   lat: 35.68, lon: 139.65, id: "tokyo-temp",   unit: "celsius",    symbol: "°C" },
-  { name: "Paris",   lat: 48.85, lon: 2.35,   id: "paris-temp",   unit: "celsius",    symbol: "°C" }
-];
-
-function logToTerminal(msg) {
-  const t = document.getElementById('terminal-body');
-  if (!t) return;
-  const p = document.createElement('p');
-  const ts = new Date().toLocaleTimeString();
-  p.innerHTML = `<span class="log-time">[${ts}]</span> > ${msg}`;
-  t.appendChild(p);
-  t.scrollTop = t.scrollHeight;
-}
-
-function setDot(id, on) {
-  const el = document.getElementById(id);
-  if (el) { el.className = 'status-dot ' + (on ? 'on' : 'off'); }
-}
-
-async function fetchWeather() {
-  logToTerminal('Initiating weather sync...');
-  try {
-    for (const loc of locations) {
-      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current_weather=true&temperature_unit=${loc.unit}`);
-      const d = await r.json();
-      const el = document.getElementById(loc.id);
-      if (el && d?.current_weather) {
-        el.innerText = Math.round(d.current_weather.temperature) + loc.symbol;
-      }
-    }
-    setDot('weather-dot', true);
-    logToTerminal('Weather sync complete.');
-  } catch(e) {
-    setDot('weather-dot', false);
-    logToTerminal('ERROR: Weather sync failed.');
-  }
-}
-
-async function askAI() {
-  const box = document.getElementById('ai-response');
-  if (!box) return;
-  box.innerText = 'Consulting the grid...';
-  logToTerminal('Requesting AI thought...');
-  try {
-    const r = await fetch('https://api.adviceslip.com/advice');
-    const d = await r.json();
-    box.innerText = d.slip.advice;
-    setDot('ai-dot', true);
-    logToTerminal('AI response received.');
-  } catch(e) {
-    box.innerText = 'The AI is meditating.';
-    setDot('ai-dot', false);
-    logToTerminal('ERROR: AI stream offline.');
-  }
-}
-
-function renderBlog() {
-  const wrap = document.getElementById('blog-posts');
-  if (!wrap) return;
-  wrap.innerHTML = '';
-  myArticles.forEach(a => {
-    const el = document.createElement('div');
-    el.className = 'blog-post';
-    el.innerHTML = `
-      <div class="blog-date">${a.date}</div>
-      <h4>${a.title}</h4>
-      <p>${a.snippet}</p>
-      <a href="${a.link}" class="blog-read">Read &rarr;</a>
-    `;
-    wrap.appendChild(el);
-  });
-  logToTerminal('Intelligence feed loaded.');
-}
-
-// Intersection observer for fade-ins
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-window.onload = () => {
-  logToTerminal('System initialized. Dream-Hoarder online.');
-  fetchWeather();
-  askAI();
-  renderBlog();
-  setInterval(fetchWeather, 300000);
-};
-</script>
+<script src="app.js" defer></script>
 </body>
 </html>

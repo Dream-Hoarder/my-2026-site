@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardening My Developer Workspace on Qubes OS — Willie Bonner Jr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">WBJ</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="interests.html">Interests</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ARTICLE -->
+<article class="blog-article">
+  <a href="blog.html" class="article-back">&larr; Back to Blog</a>
+  
+  <header class="article-header">
+    <div class="article-date">2026-05-28</div>
+    <h1 class="article-title">Qubes OS: Hardening My Developer Workspace</h1>
+    <div class="article-meta">Category: Systems Security | Target: Dev Node VM</div>
+  </header>
+  
+  <div class="article-body">
+    <p>
+      In a hostile digital landscape, developing software on a standard operating system is a risk vector. A single compromised NPM package or a malicious script can breach your entire file system, harvest SSH keys, and compromise target systems. That is why my command center runs on <strong>Qubes OS</strong>.
+    </p>
+    
+    <p>
+      Qubes implements a "security by compartmentalization" paradigm, utilizing the Xen hypervisor to isolate workloads into distinct virtual machines called Qubes (AppVMs). Here is how I partition and harden my active developer workspace.
+    </p>
+    
+    <h3>1. Compartmentalized Topology</h3>
+    <p>
+      I separate my development environments into isolated AppVMs based on the trust boundaries of the projects:
+    </p>
+    <ul>
+      <li><code>sys-net</code> &amp; <code>sys-firewall</code>: Restricted, unprivileged networking VMs handling raw interfaces and basic filtering rules.</li>
+      <li><code>vault</code>: An entirely network-isolated VM. This is where my GPG keys, master SSH keys, and offline credentials reside. No network cards are assigned.</li>
+      <li><code>work-dev</code>: A restricted development VM used only for audited codebases. Network egress is blocked except to specific internal repository endpoints.</li>
+      <li><code>untrusted-dev</code>: A disposable VM template. Any installation of experimental NPM modules, Python packages, or third-party libraries occurs here. If a package contains a credential-stealer, the exploit vanishes when the VM is shut down.</li>
+    </ul>
+
+    <div class="article-alert">
+      <strong>Zero-Trust Practice:</strong> Never run compilers, test runners, or dependency installers (like <code>npm install</code> or <code>pip install</code>) inside a persistent VM containing production secrets.
+    </div>
+
+    <h3>2. TemplateVM Customization &amp; Hardening</h3>
+    <p>
+      Since AppVM root filesystems are loaded from read-only templates, security begins in the TemplateVM (e.g., <code>fedora-minimal</code>). I apply kernel-level hardening to prevent privilege escalation:
+    </p>
+    
+    <pre><code># Inside template terminal:
+# 1. Edit /etc/sysctl.d/99-hardened.conf to disable kernel modules
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+kernel.kptr_restrict = 2
+kernel.perf_event_paranoid = 3
+kernel.yama.ptrace_scope = 2</code></pre>
+
+    <p>
+      By restricting <code>ptrace</code> scopes, I prevent a process running in user-space from inspecting or modifying the memory of other processes inside the same VM container.
+    </p>
+
+    <h3>3. SSH Proxying via Agent Forwarding VM</h3>
+    <p>
+      To prevent the development AppVM from accessing SSH private keys directly, I leverage the Qubes <code>qrexec</code> split-SSH structure. The private keys reside securely in the <code>vault</code> VM, while the <code>work-dev</code> VM forwards SSH requests through an isolated loopback.
+    </p>
+    <p>
+      This configuration ensures that even if the development workspace is fully compromised, the attacker cannot steal the private key file. The hypervisor only allows the VM to request signing operations, and all requests are auditable.
+    </p>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <span>Willie Bonner Jr.</span> — Dream-Hoarder &copy; 2026 &nbsp;|&nbsp; Pixel Prodigy Studios</p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
